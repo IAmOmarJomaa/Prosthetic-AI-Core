@@ -1,0 +1,19 @@
+# Data and heavy artifacts
+data/
+results/saved_models/
+*.tfrecord
+*.csv
+*.mat
+*.json
+
+# Python trash
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+
+# OS/IDE junk
+.vscode/
+.idea/
+.DS_Store
