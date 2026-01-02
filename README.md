@@ -2,16 +2,16 @@
 **High-Fidelity 12-DOF Prosthetic Control via Temporal Feature-Engineered LSTMs**
 
 ## 🧬 Project Overview: The "Why"
-[cite_start]This Research & Development initiative bridges the gap between affordable, discrete gesture classification and high-cost, continuous proportional control systems[cite: 19, 96, 1122]. [cite_start]By leveraging deep learning and advanced signal processing, this system predicts the continuous intent (0.0 to 1.0) for **12 Virtual Degrees of Freedom** using non-invasive 12-channel surface electromyography (sEMG)[cite: 64, 97, 698].
+This Research & Development initiative bridges the gap between affordable, discrete gesture classification and high-cost, continuous proportional control systems. By leveraging deep learning and advanced signal processing, this system predicts the continuous intent (0.0 to 1.0) for **12 Virtual Degrees of Freedom** using non-invasive 12-channel surface electromyography (sEMG).
 
 
 
 ### 🏗️ Engineering Architecture
-[cite_start]The project scientifically validated three competing hypotheses using the CRISP-DM methodology[cite: 20, 332, 1058]:
+The project scientifically validated three competing hypotheses using the CRISP-DM methodology:
 
-1.  [cite_start]**Phase 1 (Static Baseline):** Instantaneous sEMG snapshot processing using Non-negative Matrix Factorization (NMF)[cite: 112, 444, 513].
-2.  [cite_start]**Phase 2 (The Champion):** Sequential modeling utilizing **Hudgins' Time-Domain features** (RMS, WL, ZC, SSC) fed into a **Stacked LSTM**[cite: 20, 122, 659, 1092].
-3.  [cite_start]**Phase 3 (The Challenger):** End-to-End deep learning using **log-magnitude STFT Spectrograms** and a **2D-CNN**[cite: 20, 134, 793, 1019].
+1.  **Phase 1 (Static Baseline):** Instantaneous sEMG snapshot processing using Non-negative Matrix Factorization (NMF).
+2.  **Phase 2 (The Champion):** Sequential modeling utilizing **Hudgins' Time-Domain features** (RMS, WL, ZC, SSC) fed into a **Stacked LSTM**.
+3.  **Phase 3 (The Challenger):** End-to-End deep learning using **log-magnitude STFT Spectrograms** and a **2D-CNN**.
 
 ---
 
@@ -24,15 +24,15 @@
 **`convert_to_spectrogram.py`**: Generates (12, 101, 101) time-frequency representations (STFT) for Phase 3 exploration.
 
 ### 2. `src/analysis/` (The Brain)
-**`analyze_movement_clusters.py`**: Employs **K-Means (k=12)** and **PCA** to identify movement archetypes for stratified dataset balancing[cite: 748, 783, 784].
-**`analyze_10hz_data.py`**: Critical EDA that established "Rest is Not Zero," leading to the **Rest-Based Min-Max Normalization** strategy[cite: 364, 738, 739].
+**`analyze_movement_clusters.py`**: Employs **K-Means (k=12)** and **PCA** to identify movement archetypes for stratified dataset balancing.
+**`analyze_10hz_data.py`**: Critical EDA that established "Rest is Not Zero," leading to the **Rest-Based Min-Max Normalization** strategy.
 
 ### 3. `src/models/` (The Architectures)
-**`train_sequential_v2.py`**: The **Stacked LSTM ($v4$)** training core[cite: 968]. [cite_start]It utilizes 128-unit layers and a `TimeDistributed` head to achieve the project-best **MAE of 0.1149**[cite: 973, 1092, 1129].
-**`train_spectrogram_v3.py`**: A high-capacity **2D-CNN Vision Pipeline** ($4.8M$ parameters) tested for automatic feature discovery[cite: 1019, 1042].
+**`train_sequential_v2.py`**: The **Stacked LSTM ($v4$)** training coreIt utilizes 128-unit layers and a `TimeDistributed` head to achieve the project-best **MAE of 0.1149**.
+**`train_spectrogram_v3.py`**: A high-capacity **2D-CNN Vision Pipeline** ($4.8M$ parameters) tested for automatic feature discovery.
 
 ### 4. `config/` (Production Artifacts)
-**`motor_normalization_params.json`**: The digital twin parameters for the 12 Virtual Motors, enabling real-world hardware mapping (0.0-1.0 range)[cite: 368, 744, 1207].
+**`motor_normalization_params.json`**: The digital twin parameters for the 12 Virtual Motors, enabling real-world hardware mapping (0.0-1.0 range).
 
 ---
 
